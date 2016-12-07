@@ -18,10 +18,10 @@
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="117.0" layoutY="121.0" prefHeight="364.0" prefWidth="346.0">
+      <TableView fx:id="toDoTable" layoutX="117.0" layoutY="121.0" prefHeight="364.0" prefWidth="346.0">
         <columns>
-          <TableColumn prefWidth="175.0" text="ToDo" />
-          <TableColumn prefWidth="170.0" text="Expiry date" />
+          <TableColumn fx:id="toDoTitel" prefWidth="175.0" text="ToDo" />
+          <TableColumn fx:id="toDoDateCreated" prefWidth="170.0" text="Expiry date" />
         </columns>
       </TableView>
       <Button layoutX="118.0" layoutY="522.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="130.0" text="Add new " />

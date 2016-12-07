@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Mette
  */
-public class DescriptionViewController implements Initializable {
+public class ToDoViewController implements Initializable {
 
     /**
      * Initializes the controller class.
