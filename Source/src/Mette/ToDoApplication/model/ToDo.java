@@ -12,16 +12,26 @@ import java.util.Date;
  * @author Mette
  */
 public class ToDo {
-    public Date dateCreated;
-    public String titel;
-    public String category;
-    public String description;
+    private int id;
+    private Date dateCreated;
+    private String title;
+    private String category;
+    private String description;
 
-    public ToDo(Date dateCreated, String Titel, String category, String description) {
+    public ToDo(int id, Date dateCreated, String titel, String category, String description) {
+        this.id = id;
         this.dateCreated = dateCreated;
-        this.titel = Titel;
+        this.title = titel;
         this.category = category;
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDateCreated() {
@@ -32,12 +42,12 @@ public class ToDo {
         this.dateCreated = dateCreated;
     }
 
-    public String getTitel() {
-        return titel;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitel(String Titel) {
-        this.titel = Titel;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getCategory() {
@@ -55,9 +65,6 @@ public class ToDo {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
-
 }
 
 

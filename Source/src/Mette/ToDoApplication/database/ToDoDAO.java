@@ -36,7 +36,7 @@ public class ToDoDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM ToDo");
 
             while (rs.next()) {
-                ToDo.add(new ToDo(rs.getDate(1), rs.getString(2), rs.getString(3), rs.getString(5)));
+                ToDo.add(new ToDo(rs.getInt(4), rs.getDate(1), rs.getString(2), rs.getString(3), rs.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ToDoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,14 +46,27 @@ public class ToDoDAO {
     }
 
     public void addNewToDo(ToDo toDo) {
-
         PreparedStatement statement = null;
 
         try {
-            statement = dbConnection.createConnection().prepareStatement("INSERT INTO ToDo (dateCreated, titel, category, description) VALUES(strftime('%J', 'NOW', 'localtime'),?,?.?)");
-            statement.setString(2, toDo.getTitel());
-            statement.setString(3, toDo.getCategory());
-            statement.setString(5, toDo.getDescription());
+            statement = dbConnection.createConnection().prepareStatement("INSERT INTO ToDo (dateCreated, titel, category, description) VALUES(strftime('%J', 'NOW', 'localtime'),?,?,?)");
+            statement.setString(1, toDo.getTitle());
+            statement.setString(2, toDo.getCategory());
+            statement.setString(3, toDo.getDescription());
+            statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ToDoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void deleteToDoById(int idToBeDeleted) {
+        PreparedStatement statement = null;
+
+        try {
+            statement = dbConnection.createConnection().prepareStatement("DELETE FROM ToDo WHERE id = ?");
+            statement.setInt(1, idToBeDeleted);
             statement.executeUpdate();
 
         } catch (SQLException ex) {

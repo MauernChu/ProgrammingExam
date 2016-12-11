@@ -24,7 +24,7 @@
       </Label>
       <TextArea fx:id="description" layoutX="112.0" layoutY="277.0" prefHeight="247.0" prefWidth="337.0" />
       <TextField fx:id="titel" layoutX="116.0" layoutY="143.0" />
-      <MenuButton fx:id="selectCategory" layoutX="113.0" layoutY="202.0" mnemonicParsing="false" onAction="#selectCategoryDropDown" prefHeight="31.0" prefWidth="187.0" text="Other">
+      <MenuButton fx:id="selectCategory" layoutX="113.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="187.0" text="Other">
         <items>
           <MenuItem fx:id="Other" mnemonicParsing="false" onAction="#showSelectedCategoryInDropDown" text="Other" />
           <MenuItem fx:id="Shopping" mnemonicParsing="false" onAction="#showSelectedCategoryInDropDown" text="Shopping" />
@@ -35,7 +35,7 @@
       <Label layoutX="116.0" layoutY="116.0" prefHeight="21.0" prefWidth="95.0" text="Titel" />
       <Label layoutX="116.0" layoutY="181.0" text="Category" />
       <Label layoutX="113.0" layoutY="247.0" text="Description" />
-      <Button layoutX="14.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Add To List" AnchorPane.leftAnchor="100.0" />
+      <Button layoutX="14.0" layoutY="542.0" mnemonicParsing="false" onAction="#addNewButtonPushedInToDoView" prefHeight="35.0" prefWidth="130.0" text="Add To List" AnchorPane.leftAnchor="100.0" />
       <ImageView fitHeight="91.0" fitWidth="105.0" layoutX="446.0" layoutY="25.0">
          <image>
             <Image url="@Elephant.png" />

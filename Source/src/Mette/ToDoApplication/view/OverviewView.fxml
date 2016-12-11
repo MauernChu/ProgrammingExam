@@ -29,7 +29,7 @@
         </columns>
       </TableView>
       <Button fx:id="AddNew" layoutX="100.0" layoutY="542.0" mnemonicParsing="false" onAction="#addNewButtonPushedInOverviewView" prefHeight="35.0" prefWidth="130.0" text="Add new " AnchorPane.leftAnchor="100.0" />
-      <Button layoutX="306.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Delete" AnchorPane.rightAnchor="100.0" />
+      <Button layoutX="306.0" layoutY="542.0" mnemonicParsing="false" onAction="#deleteButtonInToDOViewPushed" prefHeight="35.0" prefWidth="130.0" text="Delete" AnchorPane.rightAnchor="100.0" />
       <ImageView fitHeight="91.0" fitWidth="105.0" layoutX="446.0" layoutY="25.0">
          <image>
             <Image url="@Elephant.png" />
