@@ -138,8 +138,10 @@ public class ToDoListController implements Initializable {
         Scene Scene = new Scene(Parent);
         mainApplication.primaryStage.setScene(Scene);
     }
-       public void getInformationFromUser(ActionEvent event) throws IOException{
-           
+       public void getInformationFromUser() {
+          String newTitle = titel.getText();
+          String newDescription = description.getText();
+          
        }
       
         

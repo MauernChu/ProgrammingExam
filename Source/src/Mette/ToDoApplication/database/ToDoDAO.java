@@ -50,8 +50,7 @@ public class ToDoDAO {
         PreparedStatement statement = null;
 
         try {
-            statement = dbConnection.createConnection().prepareStatement("INSERT INTO ToDo (dateCreated, titel, category, description) VALUES(?,?,?.?)");
-            statement.setString(1, toDo.getDateCreated().toString());
+            statement = dbConnection.createConnection().prepareStatement("INSERT INTO ToDo (dateCreated, titel, category, description) VALUES(strftime('%J', 'NOW', 'localtime'),?,?.?)");
             statement.setString(2, toDo.getTitel());
             statement.setString(3, toDo.getCategory());
             statement.setString(5, toDo.getDescription());
