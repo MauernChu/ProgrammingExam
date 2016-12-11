@@ -27,6 +27,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -51,7 +53,21 @@ public class ToDoListController implements Initializable {
     @FXML
     TableColumn<ToDo, String> toDoTitel;
     @FXML
+    TableColumn<ToDo, String> toDoCategory;
+    @FXML
+    TableColumn<ToDo, String> toDoDescription;
+    @FXML
     TableColumn<ToDo, String> toDoDateCreated;
+    
+   //Add new ToDO
+    @FXML 
+    private TextField titel;
+    @FXML
+    private TextField category;
+    @FXML
+    private TextArea description;
+    
+    
     
     
     
@@ -75,12 +91,17 @@ public class ToDoListController implements Initializable {
         toDoDAO = new ToDoDAO(new SqliteConnectionImpl());
         loadToDoLists();
     }    
+    
+    //Load todolist from database
      private void loadToDoLists() {
         toDoList = FXCollections.observableArrayList();
         toDoList.addAll(toDoDAO.GetToDoList());
 
         toDoTitel.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().titel)));
-        toDoDateCreated.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().dateCreated)));
+        toDoCategory.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().category)));
+        toDoDescription.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().description)));
+        toDoDateCreated.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd").format(cellData.getValue().dateCreated)));
+        
         
         toDoTable.setItems(null);
         toDoTable.setItems(toDoList);
@@ -117,6 +138,12 @@ public class ToDoListController implements Initializable {
         Scene Scene = new Scene(Parent);
         mainApplication.primaryStage.setScene(Scene);
     }
+       public void getInformationFromUser(ActionEvent event) throws IOException{
+           
+       }
+      
+        
+        
       // Is called by the main application to give a reference back to itself.
        public void setMainApplication(MainApplication mainApplication) {
         this.mainApplication = mainApplication;

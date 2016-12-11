@@ -23,8 +23,8 @@
       <TableView fx:id="toDoTable" layoutX="14.0" layoutY="132.0" prefHeight="364.0" prefWidth="553.0">
         <columns>
           <TableColumn fx:id="toDoTitel" prefWidth="123.0" text="ToDo titel" />
-            <TableColumn prefWidth="111.0" text="Category" />
-            <TableColumn prefWidth="212.0" text="Description" />
+            <TableColumn fx:id="toDoCategory" prefWidth="111.0" text="Category" />
+            <TableColumn fx:id="toDoDescription" prefWidth="212.0" text="Description" />
           <TableColumn fx:id="toDoDateCreated" prefWidth="103.0" text="Date" />
         </columns>
       </TableView>

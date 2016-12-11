@@ -22,8 +22,8 @@
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
-      <TextArea layoutX="112.0" layoutY="277.0" prefHeight="247.0" prefWidth="337.0" />
-      <TextField layoutX="116.0" layoutY="143.0" />
+      <TextArea fx:id="description" layoutX="112.0" layoutY="277.0" prefHeight="247.0" prefWidth="337.0" />
+      <TextField fx:id="titel" layoutX="116.0" layoutY="143.0" />
       <MenuButton fx:id="selectCategory" layoutX="113.0" layoutY="202.0" mnemonicParsing="false" onAction="#selectCategoryDropDown" prefHeight="31.0" prefWidth="187.0" text="Other">
         <items>
           <MenuItem fx:id="Other" mnemonicParsing="false" onAction="#showSelectedCategoryInDropDown" text="Other" />
