@@ -12,5 +12,4 @@
 hs_err_pid*
 /Source/build/
 /Source/dist/
-/Source/nbproject/*
 Source/nbproject/private/
