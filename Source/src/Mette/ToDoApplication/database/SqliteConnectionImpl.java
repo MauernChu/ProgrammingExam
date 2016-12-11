@@ -10,12 +10,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
+ * Creates connection to Sqlite database
  * @author Mette
  */
 public class SqliteConnectionImpl implements DbConnection {
 
-      @Override
+    /**
+     * Creates the connection to the Sqlite database
+     * @return connection to Sqlite database
+     */
+    @Override
     public Connection createConnection() {
         try{
             Class.forName("org.sqlite.JDBC");

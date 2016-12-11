@@ -15,17 +15,17 @@
         <URL value="@todoview.css" />
     </stylesheets>
    <children>
-      <Label layoutX="195.0" layoutY="44.0" prefHeight="54.0" prefWidth="191.0" text="Your little helper" textAlignment="CENTER" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="194.0" AnchorPane.topAnchor="44.0">
+      <Label layoutX="195.0" layoutY="35.0" prefHeight="54.0" prefWidth="191.0" text="Your little helper" textAlignment="CENTER" AnchorPane.bottomAnchor="517.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="194.0" AnchorPane.topAnchor="35.0">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
       <TableView fx:id="toDoTable" layoutX="14.0" layoutY="132.0" prefHeight="364.0" prefWidth="553.0">
         <columns>
-          <TableColumn fx:id="toDoTitel" prefWidth="123.0" text="ToDo titel" />
-            <TableColumn fx:id="toDoCategory" prefWidth="111.0" text="Category" />
-            <TableColumn fx:id="toDoDescription" prefWidth="212.0" text="Description" />
-          <TableColumn fx:id="toDoDateCreated" prefWidth="103.0" text="Date" />
+          <TableColumn fx:id="toDoTitel" editable="false" prefWidth="123.0" sortable="false" text="ToDo titel" />
+            <TableColumn fx:id="toDoCategory" editable="false" prefWidth="111.0" sortable="false" text="Category" />
+            <TableColumn fx:id="toDoDescription" editable="false" prefWidth="212.0" sortable="false" text="Description" />
+          <TableColumn fx:id="toDoDateCreated" editable="false" prefWidth="103.0" sortable="false" text="Date" />
         </columns>
       </TableView>
       <Button fx:id="AddNew" layoutX="100.0" layoutY="542.0" mnemonicParsing="false" onAction="#addNewButtonPushedInOverviewView" prefHeight="35.0" prefWidth="130.0" text="Add new " AnchorPane.leftAnchor="100.0" />
@@ -35,5 +35,10 @@
             <Image url="@Elephant.png" />
          </image>
       </ImageView>
+      <Label layoutX="148.0" layoutY="89.0" text="Helps you remember all the important things to do">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

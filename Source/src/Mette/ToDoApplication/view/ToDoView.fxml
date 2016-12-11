@@ -17,7 +17,7 @@
         <URL value="@descriptionview.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" layoutX="195.0" layoutY="44.0" prefHeight="54.0" prefWidth="191.0" text="Your little helper" textAlignment="CENTER" AnchorPane.bottomAnchor="509.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="43.0">
+      <Label alignment="CENTER" layoutX="195.0" layoutY="35.0" prefHeight="54.0" prefWidth="191.0" text="Your little helper" textAlignment="CENTER" AnchorPane.bottomAnchor="509.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="43.0">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
@@ -31,7 +31,7 @@
             <MenuItem fx:id="Notes" mnemonicParsing="false" onAction="#showSelectedCategoryInDropDown" text="Notes" />
         </items>
       </MenuButton>
-      <Button layoutX="298.0" layoutY="543.0" mnemonicParsing="false" onAction="#cancelButtonPushedInAddNewView" prefHeight="35.0" prefWidth="130.0" text="Cancel" AnchorPane.rightAnchor="100.0" />
+      <Button layoutX="298.0" layoutY="543.0" mnemonicParsing="false" onAction="#cancelButtonPushedInToDoView" prefHeight="35.0" prefWidth="130.0" text="Cancel" AnchorPane.rightAnchor="100.0" />
       <Label layoutX="116.0" layoutY="116.0" prefHeight="21.0" prefWidth="95.0" text="Titel" />
       <Label layoutX="116.0" layoutY="181.0" text="Category" />
       <Label layoutX="113.0" layoutY="247.0" text="Description" />

@@ -6,72 +6,30 @@
 package Mette.ToDoApplication.database;
 
 import Mette.ToDoApplication.model.ToDo;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
+ * Interface for getting data from database
  * @author Mette
  */
-public class ToDoDAO {
+public interface ToDoDAO {
 
-    private final DbConnection dbConnection;
+    /**
+     * Get all the columns with ToDo items from the database
+     * @return ArrayList with ToDo items
+     */
+    ArrayList<ToDo> getToDoList();
 
-    public ToDoDAO(DbConnection dbConnection) {
-        this.dbConnection = dbConnection;
-    }
+    /**
+     * Add a new ToDo item with values from the UI.
+     * @param toDo new ToDo item
+     */
+    void addNewToDo(ToDo toDo);
 
-    public ArrayList<ToDo> GetToDoList() {
-        ArrayList<ToDo> ToDo = new ArrayList<ToDo>();
+    /**
+     * Deletes ToDo item from database based by it's id.
+     * @param idToBeDeleted id to be deleted.
+     */
+    void deleteToDoById(int idToBeDeleted);
 
-        Statement stmt = null;
-
-        try {
-            stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ToDo");
-
-            while (rs.next()) {
-                ToDo.add(new ToDo(rs.getInt(4), rs.getDate(1), rs.getString(2), rs.getString(3), rs.getString(5)));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ToDoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return ToDo;
-    }
-
-    public void addNewToDo(ToDo toDo) {
-        PreparedStatement statement = null;
-
-        try {
-            statement = dbConnection.createConnection().prepareStatement("INSERT INTO ToDo (dateCreated, titel, category, description) VALUES(strftime('%J', 'NOW', 'localtime'),?,?,?)");
-            statement.setString(1, toDo.getTitle());
-            statement.setString(2, toDo.getCategory());
-            statement.setString(3, toDo.getDescription());
-            statement.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ToDoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public void deleteToDoById(int idToBeDeleted) {
-        PreparedStatement statement = null;
-
-        try {
-            statement = dbConnection.createConnection().prepareStatement("DELETE FROM ToDo WHERE id = ?");
-            statement.setInt(1, idToBeDeleted);
-            statement.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ToDoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 }
