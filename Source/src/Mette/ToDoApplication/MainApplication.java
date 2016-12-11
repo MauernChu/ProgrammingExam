@@ -5,7 +5,7 @@
  */
 package Mette.ToDoApplication;
 
-import Mette.ToDoApplication.controller.OverviewViewController;
+import Mette.ToDoApplication.controller.ToDoListController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -29,17 +29,17 @@ public class MainApplication extends Application {
         this.primaryStage = primaryStage;
         
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Mette/ToDoApplication/view/OverviewView.fxml"));
-       // loader.setController(new OverviewViewController());
+        loader.setController(new ToDoListController());
         Parent root = (Parent) loader.load();
         Scene homeScene = new Scene(root);
-        primaryStage.getIcons().add(new Image("Mette/ToDoApplication/pictures/Elephant.png"));
+        primaryStage.getIcons().add(new Image("Mette/ToDoApplication/view/Elephant.png"));
         primaryStage.setTitle("Your Little Helper");
         primaryStage.setScene(homeScene);
         primaryStage.show();
         
         //Set the main application reference in the tableViewController
-        //OverviewViewController overviewViewController = loader.getController();
-        //OverviewViewController.setMainApplication(this);
+        ToDoListController overviewViewController = loader.getController();
+        overviewViewController.setMainApplication(this);
     }
     
     /**
@@ -48,5 +48,6 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
 }
 

@@ -5,26 +5,35 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Mette.ToDoApplication.controller.OverviewViewController">
+<AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="580.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@todoview.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" layoutX="147.0" layoutY="22.0" prefHeight="54.0" prefWidth="306.0" text="Your little helper" textAlignment="CENTER">
+      <Label layoutX="195.0" layoutY="44.0" prefHeight="54.0" prefWidth="191.0" text="Your little helper" textAlignment="CENTER" AnchorPane.bottomAnchor="508.0" AnchorPane.leftAnchor="195.0" AnchorPane.rightAnchor="194.0" AnchorPane.topAnchor="44.0">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="toDoTable" layoutX="117.0" layoutY="121.0" prefHeight="364.0" prefWidth="346.0">
+      <TableView fx:id="toDoTable" layoutX="14.0" layoutY="132.0" prefHeight="364.0" prefWidth="553.0">
         <columns>
-          <TableColumn fx:id="toDoTitel" prefWidth="175.0" text="ToDo" />
-          <TableColumn fx:id="toDoDateCreated" prefWidth="170.0" text="Expiry date" />
+          <TableColumn fx:id="toDoTitel" prefWidth="123.0" text="ToDo titel" />
+            <TableColumn prefWidth="111.0" text="Category" />
+            <TableColumn prefWidth="212.0" text="Description" />
+          <TableColumn fx:id="toDoDateCreated" prefWidth="103.0" text="Date" />
         </columns>
       </TableView>
-      <Button layoutX="118.0" layoutY="522.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="130.0" text="Add new " />
-      <Button layoutX="335.0" layoutY="522.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="130.0" text="Delete" />
+      <Button fx:id="AddNew" layoutX="100.0" layoutY="542.0" mnemonicParsing="false" onAction="#addNewButtonPushedInOverviewView" prefHeight="35.0" prefWidth="130.0" text="Add new " AnchorPane.leftAnchor="100.0" />
+      <Button layoutX="306.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="130.0" text="Delete" AnchorPane.rightAnchor="100.0" />
+      <ImageView fitHeight="91.0" fitWidth="105.0" layoutX="446.0" layoutY="25.0">
+         <image>
+            <Image url="@Elephant.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
