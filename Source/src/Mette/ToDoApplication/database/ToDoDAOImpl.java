@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 
 /**
  * Class for getting data from database
+ *
  * @author Mette
  */
 public class ToDoDAOImpl implements ToDoDAO {
@@ -24,6 +25,7 @@ public class ToDoDAOImpl implements ToDoDAO {
 
     /**
      * Constructor to create new ToDoDAO object
+     *
      * @param dbConnection
      */
     public ToDoDAOImpl(DbConnection dbConnection) {
@@ -32,13 +34,14 @@ public class ToDoDAOImpl implements ToDoDAO {
 
     /**
      * Get all the columns with ToDo items from the database
+     *
      * @return ArrayList with ToDo items
      */
     @Override
     public ArrayList<ToDo> getToDoList() {
-        ArrayList<ToDo> ToDo = new ArrayList<ToDo>();
+        ArrayList<ToDo> ToDo = new ArrayList<>();
 
-        Statement stmt = null;
+        Statement stmt;
 
         try {
             stmt = dbConnection.createConnection().createStatement();
@@ -56,6 +59,7 @@ public class ToDoDAOImpl implements ToDoDAO {
 
     /**
      * Add a new ToDo item with values from the UI.
+     *
      * @param toDo new ToDo item
      */
     @Override
@@ -76,7 +80,8 @@ public class ToDoDAOImpl implements ToDoDAO {
     }
 
     /**
-     * Deletes ToDo item from database based by it's id.
+     * Deletes ToDo item from database based by it's id (primary key).
+     *
      * @param idToBeDeleted id to be deleted.
      */
     @Override
@@ -94,3 +99,29 @@ public class ToDoDAOImpl implements ToDoDAO {
 
     }
 }
+
+//---------------Test code----------------------
+//Method for mapping database information to new object -> for the popupwindow
+
+/*   @Override
+    public ToDo detailsPopUpToDo(int selectedShowToDo){             
+            PreparedStatement statement = null;
+            ToDo toDoDatabase = null;
+            
+            try{
+            statement = dbConnection.createConnection().prepareStatement("SELECT * FROM ToDo WHERE id = ?");
+            statement.setInt(1, selectedShowToDo);
+            ResultSet rs = statement.executeQuery();
+            int id = rs.getInt(4);
+            Date dateCreated = rs.getDate(1);
+            String title = rs.getString(2);
+            String category = rs.getString(3);
+            String description = rs.getString(5);
+            toDoDatabase = new ToDo(id, dateCreated, title, category, description);
+            
+           } catch (SQLException ex) {
+            Logger.getLogger(ToDoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            
+            return toDoDatabase;
+    } */

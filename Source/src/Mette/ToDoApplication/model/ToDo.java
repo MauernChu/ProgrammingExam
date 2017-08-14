@@ -4,9 +4,11 @@ import java.util.Date;
 
 /**
  * The model for a ToDo item
+ *
  * @author Mette
  */
 public class ToDo {
+
     private int id;
     private Date dateCreated;
     private String title;
@@ -15,6 +17,7 @@ public class ToDo {
 
     /**
      * Constructor to create a new ToDo item
+     *
      * @param id the id of the ToDo
      * @param dateCreated the date of when the ToDo was created
      * @param title the title of the ToDo
@@ -31,6 +34,7 @@ public class ToDo {
 
     /**
      * Gets the id of the ToDo item
+     *
      * @return id of the ToDo item
      */
     public int getId() {
@@ -39,6 +43,7 @@ public class ToDo {
 
     /**
      * Sets the id of the ToDo item
+     *
      * @param id of the ToDo item
      */
     public void setId(int id) {
@@ -47,6 +52,7 @@ public class ToDo {
 
     /**
      * Gets the creation date of the ToDo item
+     *
      * @return creation date of the ToDo item
      */
     public Date getDateCreated() {
@@ -55,6 +61,7 @@ public class ToDo {
 
     /**
      * Sets the creation date of the ToDo item
+     *
      * @param dateCreated creation date of the ToDo item
      */
     public void setDateCreated(Date dateCreated) {
@@ -63,6 +70,7 @@ public class ToDo {
 
     /**
      * Gets the title of the ToDo item
+     *
      * @return title of the ToDo item
      */
     public String getTitle() {
@@ -71,6 +79,7 @@ public class ToDo {
 
     /**
      * Sets the title of the ToDo item
+     *
      * @param title of the ToDo item
      */
     public void setTitle(String title) {
@@ -79,6 +88,7 @@ public class ToDo {
 
     /**
      * Gets the category of the ToDo item
+     *
      * @return category of the ToDo item
      */
     public String getCategory() {
@@ -87,6 +97,7 @@ public class ToDo {
 
     /**
      * Sets category of the ToDo item
+     *
      * @param category of the ToDo item
      */
     public void setCategory(String category) {
@@ -95,6 +106,7 @@ public class ToDo {
 
     /**
      * Gets description of the ToDo item
+     *
      * @return description of the ToDo item
      */
     public String getDescription() {
@@ -103,11 +115,10 @@ public class ToDo {
 
     /**
      * Sets description of the ToDo item
+     *
      * @param description of the ToDo item
      */
     public void setDescription(String description) {
         this.description = description;
     }
 }
-
-

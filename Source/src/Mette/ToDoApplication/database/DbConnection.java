@@ -9,14 +9,16 @@ import java.sql.Connection;
 
 /**
  * Interface for database connection
+ *
  * @author Mette
  */
 public interface DbConnection {
 
     /**
      * Creates a connection to the database
+     *
      * @return connection to database
      */
     public Connection createConnection();
-    
+
 }

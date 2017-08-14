@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,9 +22,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -61,18 +64,22 @@ public class ToDoListController implements Initializable {
     private TextArea description;
 
     @FXML
-    public MenuButton selectCategory;
+    private MenuButton selectCategory;
     @FXML
-    public MenuItem other;
+    private MenuItem other;
     @FXML
-    public MenuItem shopping;
+    private MenuItem shopping;
     @FXML
-    public MenuItem notes;
+    private MenuItem notes;
 
-    private String selectedCategory = "Other";
+    @FXML
+    private Button delete;
+
+    private String selectedCategory;
 
     /**
      * Create a new ToDo controller object
+     *
      * @param toDoDAO interface of the ToDo database access
      */
     public ToDoListController(ToDoDAO toDoDAO) {
@@ -81,12 +88,25 @@ public class ToDoListController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadToDoLists();
+        //Sets the button delete to be enabled
+        delete.setDisable(true);
+        //checks if there is a selection of anything in the table (therefore listener - observerpattern)
+        //Gives the possibility to get a notification when somebody pushes the button.
+        toDoTable.getSelectionModel().selectedItemProperty().addListener((newSelection) -> {
+            if (newSelection != null) {
+                delete.setDisable(false);
+            } else {
+                delete.setDisable(true);
+            }
+
+        });
     }
 
     //Load todolist from database
@@ -99,13 +119,14 @@ public class ToDoListController implements Initializable {
         toDoDescription.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().getDescription())));
         toDoDateCreated.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd").format(cellData.getValue().getDateCreated())));
 
-        toDoTable.setItems(null);
+        // toDoTable.setItems(null);
         toDoTable.setItems(toDoList);
 
     }
 
     /**
      * Loads ToDoView when "Add New" button is pushed in OverviewView.
+     *
      * @param event
      * @throws IOException
      */
@@ -118,7 +139,9 @@ public class ToDoListController implements Initializable {
     }
 
     /**
-     * Shows selected category for making new ToDo Item in ToDoView, and stores the selected category in the variable "SelectedCategory"
+     * Shows selected category for making new ToDo Item in ToDoView, and stores
+     * the selected category in the variable "SelectedCategory"
+     *
      * @param event
      * @throws IOException
      */
@@ -126,10 +149,13 @@ public class ToDoListController implements Initializable {
         MenuItem menu = (MenuItem) event.getSource();
         selectCategory.setText(menu.getText());
         selectedCategory = menu.getText();
+        //if (selectedCategory.isEmpty())
+          //selectedCategory = "Other";
     }
 
     /**
      * Loads OverviewView when "cancel" Button is pushed in ToDoView.
+     *
      * @param event
      * @throws IOException
      */
@@ -142,8 +168,10 @@ public class ToDoListController implements Initializable {
     }
 
     /**
-     * Stores the title and description entered by user, and makes new ToDo object containing the new values from user.
-     * Adds the new object to the database, and loads OverviewView.
+     * Stores the title and description entered by user, and makes new ToDo
+     * object containing the new values from user. Adds the new object to the
+     * database, and loads OverviewView.
+     *
      * @param event
      * @throws IOException
      */
@@ -162,27 +190,74 @@ public class ToDoListController implements Initializable {
     }
 
     /**
-     * Stores the item by it's id that has been clicked on, in the variable idToBeDeleted.
-     * Deletes the item from the database, and then updates the database.
+     * Stores the item by it's id that has been clicked on, in the variable
+     * idToBeDeleted. Deletes the item from the database, and then updates the
+     * database.
+     *
      * @param event
      * @throws IOException
      */
-    public void deleteButtonInToDOViewPushed(ActionEvent event) throws IOException {
+    public void deleteButtonOveviewViewPushed(ActionEvent event) throws IOException {
         ToDo selectedToDo = toDoTable.getSelectionModel().getSelectedItem();
         int idToBeDeleted = selectedToDo.getId();
-
         toDoDAO.deleteToDoById(idToBeDeleted);
         loadToDoLists();
+        delete.setDisable(true);
     }
 
     // Is called by the main application to give a reference back to itself.
-
     /**
      * Makes a new main application object.
+     *
      * @param mainApplication is the main application
      */
-    
     public void setMainApplication(MainApplication mainApplication) {
         this.mainApplication = mainApplication;
     }
+    
+    /**
+     * Method for closing the application
+     *
+     * @param event
+     * @throws IOException
+     */
+    public void closeApplication(ActionEvent event) throws IOException {
+    Platform.exit();
+    System.exit(0);
+    }
 }
+
+//---------------------------------- Test code ---------------------------------
+//Listener to dobbelt click on the items.
+
+/*   myNode.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    @Override
+    public void handle(MouseEvent mouseEvent) {
+        if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+            if(mouseEvent.getClickCount() == 2){
+                System.out.println("Double clicked");
+            }
+        }
+    }
+}); */
+ /*
+    toDoTable.setRowFactory( tv -> {
+    TableRow<ToDo> row = new TableRow<>();
+    row.setOnMouseClicked(event -> {
+        if (event.getClickCount() == 2) {
+            ToDo rowData = row.getItem();
+            System.out.println(rowData);
+        }
+    });
+    return row ;
+}); 
+
+
+//Method for getting the information about a specific item in 
+
+    public void toDoDetailsOverviewView(ActionEvent event) throws IOException {
+        ToDo selectedShowToDo = toDoTable.getSelectionModel().getSelectedItem();
+        int idToBeShowed = selectedShowToDo.getId();
+        toDoDAO.detailsPopUpToDo(idToBeShowed);
+    }
+ */
